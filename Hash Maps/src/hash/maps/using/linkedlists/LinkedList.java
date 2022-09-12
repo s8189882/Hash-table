@@ -91,6 +91,23 @@ public class LinkedList<K> {
 		return count;
 	}
 	
+	public void pop(K dataToRemove) {
+		INode<K> thisNode = head;
+		
+		if (dataToRemove == head.getKey()) {
+			thisNode = head.getNext();
+			head = thisNode;
+		}
+		else {
+			INode<K> previous = null;
+			while (thisNode.getKey() != dataToRemove) {
+				previous = thisNode;
+				thisNode = thisNode.getNext();
+			}
+			previous.setnext(thisNode.getNext());
+		}
+	}
+	
 	public INode<K> pop() {
 		INode<K> tempNode = this.head;
 		this.head = head.getNext();
