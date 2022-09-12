@@ -1,9 +1,37 @@
 package hash.maps.using.linkedlists;
 
-public class HashMap{
+import java.util.Iterator;
+import java.util.Map;
+
+public class HashMap<K, V> {
+
+	LinkedList<K> list;
+
 	
-	public static void main(String[] args) {
-		
-		System.out.println("Welcome to Hash Table data structure!");
+	public HashMap() {
+		this.list = new LinkedList<>();
+	}
+	
+	
+	public V get(K key) {
+		MapNode<K, V> mapNode = (MapNode<K, V>) this.list.search(key);
+
+		return (mapNode == null) ? null : mapNode.getValue();
+	}
+	
+	public void add(K key, V value) {
+		MapNode<K, V> mapNode = (MapNode<K, V>) this.list.search(key);
+
+		if(mapNode == null) {
+			mapNode = new MapNode<>(key, value);
+			this.list.append(mapNode);
+		}
+		else
+			mapNode.setValue(value);
+	}
+	
+	@Override
+	public String toString() {
+		return "HashMapNodes { " + list + " } ";
 	}
 }
