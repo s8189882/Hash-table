@@ -16,6 +16,17 @@ public class LinkedHashMap<K,V> {
 			this.bucketArray.add(null);
 	}
 	
+	public void remove(K key){
+		int index = this.getBucketIndex(key);
+		LinkedList<K> linkedList = this.bucketArray.get(index);
+
+		if(linkedList == null) {
+			System.out.println("\nNo entries!");
+		}
+		
+		linkedList.pop(key);
+	}
+	
 	public void add(K key, V value) {
 		int index = this.getBucketIndex(key);
 		LinkedList<K> linkedList = this.bucketArray.get(index);
