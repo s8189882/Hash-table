@@ -59,13 +59,13 @@ public class LinkedList<K> {
 	public INode<K> search(K findElement) {
 		INode<K> thisNode = head;
 		
-		while (thisNode != null && thisNode.getNext() != null) {
-			if (thisNode.getKey() == findElement) {
-				System.out.println("\nFound element " + findElement + " in the Linked List!");
+		while (thisNode != null) {
+			if (thisNode.getKey().equals(findElement)) {
+				return thisNode;
 			}
 			thisNode = thisNode.getNext();
 		}	
-		return thisNode;
+		return null;
 	}
 	
 	public void insert(INode<K> node, K insertElement) {
